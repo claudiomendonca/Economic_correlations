@@ -6,14 +6,20 @@ Não finalizado
 @author: ClaudioMendonca
 """
 
-import matplotlib
+import matplotlib.pyplot as plt
 
-def plot_compare(data_frame,col1,col2):
-        
-    t = list(data_frame.index.values)
-    data1 = data_frame[col1]
-    data2 = data_frame[col2]
+def plot_compare(data_frame,col1,col2, normalized):
     
+    t = list(data_frame.index.values)
+    
+    if normalized == False:    
+        data1 = data_frame[col1]
+        data2 = data_frame[col2]
+    
+    else:
+        data1 = data_frame[col1]/data_frame[col1][0]
+        data2 = data_frame[col2]/data_frame[col2][0]
+            
     fig, ax1 = plt.subplots()
     
     color = 'tab:red'
