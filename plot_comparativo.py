@@ -8,8 +8,9 @@ Não finalizado
 
 import matplotlib.pyplot as plt
 
-def plot_compare(data_frame,col1,col2, normalized):
+def plot_compare(data_frame,col1,col2,data_inicio, data_fim, normalized):
     
+    data_frame = data_frame[data_inicio:data_fim]
     t = list(data_frame.index.values)
     
     if normalized == False:    
@@ -19,7 +20,7 @@ def plot_compare(data_frame,col1,col2, normalized):
     else:
         data1 = data_frame[col1]/data_frame[col1][0]
         data2 = data_frame[col2]/data_frame[col2][0]
-            
+          
     fig, ax1 = plt.subplots()
     
     color = 'tab:red'

@@ -68,36 +68,10 @@ Corr_pearson = df_all.corr(method='pearson')
 sns.heatmap(Corr_spearman, annot=True)
 
 
-# Create some mock data
-t = list(df_wall.index.values)
-data1 = df_all['WEGE3']
-data2 = df_all['Dollar']
 
-fig, ax1 = plt.subplots()
+# Plot
+data_inicio = '2016-12-25'
+data_fim = '2021-06-25'
 
-color = 'tab:red'
-ax1.set_xlabel('data')
-ax1.set_ylabel('WEGE3', color=color)
-ax1.plot(t, data1, color=color)
-ax1.tick_params(axis='y', labelcolor=color)
-
-ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
-
-color = 'tab:blue'
-ax2.set_ylabel('Dollar', color=color)  # we already handled the x-label with ax1
-ax2.plot(t, data2, color=color)
-ax2.tick_params(axis='y', labelcolor=color)
-
-fig.tight_layout()  # otherwise the right y-label is slightly clipped
-plt.show()
-
-#plot correlacao
-sns.heatmap(Corr, annot=True)
-
-df_wallet_filled.plot()
-plt.show()
-
-sns.set()
-df_wallet_filled.plot(subplots=True, figsize=(20, 8))
-plt.show()
+plot_compare(df_all,'WEGE3','Dollar',data_inicio, data_fim, False)
 
